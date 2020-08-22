@@ -106,7 +106,7 @@ class MusicPlayer:
     scrol_y.config(command=self.playlist.yview)
     self.playlist.pack(fill=BOTH)
     # Changing Directory for fetching Songs
-    os.chdir("/home/kali/Desktop/music_player")
+    os.chdir("/home/kali/Desktop/music_player/music_files")
     # Fetching Songs
     songtracks = os.listdir()
     # Inserting Songs into Playlist
@@ -120,7 +120,7 @@ class MusicPlayer:
         sound = AudioSegment.from_mp3(files)
         sound.export(save,format = 'wav')
         messagebox.showinfo("Converted",str(sound)+".wav")
-        os.chdir('/home/kali/Desktop/music_player')
+        os.chdir('/home/kali/Desktop/music_player/music_files')
         songstracks = os.listdir()
         for track in songstracks:
             self.playlist.insert(END,track)
@@ -136,24 +136,25 @@ class MusicPlayer:
       pygame.mixer.music.set_volume(a)
 
   def visuals(self):
-      os.chdir("/home/kali/Desktop/music_player")
+      os.chdir("/home/kali/Desktop/music_player/music_files")
       songs = os.listdir()
       prompt = simpledialog.askinteger("input","Enter the index of the song(First song starts from 0)")
       try:
         if len(songs)>= prompt:
             fs,data = read(songs[prompt])
             data = data[:,0]
+            plt.figure()
             plt.plot(data)
             plt.show()
       except:
-          messagebox.showerror("Error","Please a valid number")
+          messagebox.showerror("Error","Please enter a valid number")
   
   def open(self):
       try:
         root.filename = filedialog.askopenfilename(initialdir = "/home/kali",title = "Selct your track/album in .wav EXTENSION",filetypes=(("Mp 3 Music Files","*.mp3"),("wav Music Files","*.wav")))
         print("Added"+" " +root.filename)
         messagebox.showinfo("Added","Ahoy! Press the Play Button")
-        os.chdir('/home/kali/Desktop/music_player')
+        os.chdir('/home/kali/Desktop/music_playeri/music_files')
         tracks = os.listdir()
         for track in tracks:
             self.playlist.insert(END,track)

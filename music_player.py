@@ -127,18 +127,15 @@ class MusicPlayer:
       except:
           messagebox.showerror("Error","Cannot Convert the file")
 
-  @staticmethod
-  def help():
+  def help(self):
       messagebox.showinfo("Help","For more information please refer to my github page in contributions")
 
-  @staticmethod
-  def volume():
+  def volume(self):
       a = pygame.mixer.music.get_volume()
       messagebox.showinfo("Volume","Your current Volume is"+str(int(pygame.mixer.music.get_volume()*100)))
       pygame.mixer.music.set_volume(a)
 
-  @staticmethod
-  def visuals():
+  def visuals(self):
       os.chdir("/home/kali/Desktop/music_player/music_files")
       songs = os.listdir()
       prompt = simpledialog.askinteger("input","Enter the index of the song(First song starts from 0)")
@@ -164,28 +161,24 @@ class MusicPlayer:
       except:
           messagebox.showerror("Error","Cannot Open the File")
     
-  @staticmethod
-  def save():
+  def save(self):
       try:
           files = filedialog.asksaveasfilename(title="Enter the name of your file",filetypes=(("python files",".py"),("Text files",".txt"),("mp3 Music Files","*.mp3"),("wav Music Files","*.wav"),("mp4 Music Files","*.mp4")),initialdir="/home/kali")
       except:
           print("Cannot save the file")
           messagebox.showerror("Error","Cannot Save the File")
   
-  @staticmethod
-  def contribute():
+  def contribute(self):
       webbrowser.open("https://github.com/avishmehta68710")
 
-  @staticmethod
-  def contact():
+  def contact(self):
       messagebox.showinfo("Contact","For any queries or ideas\n Please contact me at avishmehta6870@gmail.com")
 
   def rewind(self):
       self.status.set('-Rewind')
       pygame.mixer.music.rewind()
 
-  @staticmethod
-  def record():
+  def record(self):
       fs = 44100  # Sample rate
       seconds = simpledialog.askinteger("Input","Enter the duration of recording(in seconds)")  # Duration of recording
       myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
@@ -193,8 +186,7 @@ class MusicPlayer:
       write('recordings.wav', fs, myrecording)  # Save as WAV file 
   
 
-  @staticmethod
-  def test():
+  def test(self):
       frequency = 440
       fs = 44100
       seconds = 2

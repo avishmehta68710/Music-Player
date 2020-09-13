@@ -9,7 +9,7 @@ import simpleaudio as sa
 import sounddevice as sd
 from scipy.io.wavfile import write
 import matplotlib.pyplot as plt
-from scipy.io.wavfile import read,write
+from scipy.io.wavfile import read
 from IPython.display import Audio
 from numpy.fft import fft,ifft
 import requests
